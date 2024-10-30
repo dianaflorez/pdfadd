@@ -11,7 +11,7 @@ $this->title = 'PHPADD';
 
         <p class="lead">A traves de esta aplicación podras unir varios pdfs.</p>
 
-        <p><a class="btn btn-lg btn-success" href="./upload/upload">Iniciar</a></p>
+        <p><a class="btn btn-lg btn-success" href="./upload/index">Iniciar</a></p>
     </div>
 
     <div class="body-content">

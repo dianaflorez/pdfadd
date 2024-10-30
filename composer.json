@@ -20,7 +20,8 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "setasign/fpdi": "^2.6",
         "kartik-v/yii2-widget-fileinput": "@dev",
-        "setasign/fpdf": "^1.8"
+        "setasign/fpdf": "^1.8",
+        "mpdf/mpdf": "^8.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
