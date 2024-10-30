@@ -85,7 +85,7 @@ class UploadController extends Controller
                 // El comando se ejecutó correctamente
                 echo "exito";
                 var_dump( $output);
-                die();
+                //die();
                 Yii::$app->session->setFlash('success', 'Archivo convertido exitosamente.');
             }
         }
