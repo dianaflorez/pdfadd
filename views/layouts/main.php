@@ -41,7 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [
             ['label' => 'Inicio', 'url' => ['/site/index']],
             ['label' => 'Acerca de', 'url' => ['/site/about']],
-            ['label' => 'Agragar PDF', 'url' => ['/upload/upload']],
+            ['label' => 'Agragar PDF', 'url' => ['/upload/index']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Login', 'url' => ['/site/login']]

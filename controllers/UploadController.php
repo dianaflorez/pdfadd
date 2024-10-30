@@ -36,7 +36,7 @@ class UploadController extends Controller
             }
             // Guardar los archivos en la sesión para usarlos después
             Yii::$app->session->set('uploadedFiles', $savedFiles);
-            return ['success' => true];
+            return ['success' => true, 'name' => $file->baseName];
         }
         return ['success' => false];
     }
@@ -182,28 +182,28 @@ class UploadController extends Controller
     // }
 
 
-public function actionDownloadMergedPdf()
-{
-    $uploadPath = Yii::getAlias('@webroot/uploads/');
-    $mergedFilePath = $uploadPath . 'pdf_combined.pdf';
+    public function actionDownloadMergedPdf()
+    {
+        $uploadPath = Yii::getAlias('@webroot/uploads/');
+        $mergedFilePath = $uploadPath . 'pdf_combined.pdf';
 
-    if (!file_exists($mergedFilePath)) {
-        Yii::$app->session->setFlash('error', 'El archivo combinado no está disponible.');
-        return $this->redirect(['upload/index']);
-    }
-
-    // Configura la respuesta para la descarga del archivo
-    Yii::$app->response->sendFile($mergedFilePath, 'pdf_combined.pdf', ['inline' => true])->send();
-
-    // Elimina todos los archivos PDF en el directorio /uploads
-    foreach (glob($uploadPath . '*.pdf') as $file) {
-        if (is_file($file)) {
-            unlink($file); // Elimina cada archivo
+        if (!file_exists($mergedFilePath)) {
+            Yii::$app->session->setFlash('error', 'El archivo combinado no está disponible.');
+            return $this->redirect(['upload/index']);
         }
-    }
 
-    // Evita que cualquier otra salida interfiera
-    Yii::$app->end();
-}
+        // Configura la respuesta para la descarga del archivo
+        Yii::$app->response->sendFile($mergedFilePath, 'pdf_combined.pdf', ['inline' => true])->send();
+
+        // Elimina todos los archivos PDF en el directorio /uploads
+        foreach (glob($uploadPath . '*.pdf') as $file) {
+            if (is_file($file)) {
+                unlink($file); // Elimina cada archivo
+            }
+        }
+
+        // Evita que cualquier otra salida interfiera
+        Yii::$app->end();
+    }
 
 }

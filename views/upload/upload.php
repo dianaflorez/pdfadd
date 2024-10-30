@@ -61,8 +61,9 @@ $js = <<<JS
             processData: false,
             contentType: false,
             success: function(data) {
+                console.log(data)
                 if (data.success) {
-                    $('#file-list').append('<li>' + 'Archivo subido con éxito' + '</li>');
+                    $('#file-list').append('<li>' + 'Archivo subido con éxito ' + data.name + '</li>');
                     alert('Archivo subido');
                 } else {
                     alert('Error al subir el archivo');
