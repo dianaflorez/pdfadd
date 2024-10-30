@@ -205,11 +205,12 @@ class UploadController extends Controller
         }
 
         foreach (glob($uploadPathConverted . '*.pdf') as $file) {
+            echo $file."<br>";
             if (is_file($file)) {
                 unlink($file); // Elimina cada archivo
             }
         }
-
+die();
         // Evita que cualquier otra salida interfiera
         Yii::$app->end();
     }
