@@ -197,7 +197,7 @@ class UploadController extends Controller
 
         echo "casi converte ".$uploadPathConverted;
 
-        foreach (glob($uploadPathConverted . '*.pdf') as $file2) {
+        foreach (glob($uploadPathConverted . '*') as $file2) {
             echo "dentro converte";
             echo $file2."<br>";
             if (is_file($file2)) {
