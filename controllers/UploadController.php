@@ -83,7 +83,8 @@ class UploadController extends Controller
                 Yii::$app->session->setFlash('error', 'Error al ejecutar el comando Ghostscript: ' . implode("\n", $output));
             } else {
                 // El comando se ejecutó correctamente
-                echo "exito $output";
+                echo "exito";
+                var_dump( $output);
                 die();
                 Yii::$app->session->setFlash('success', 'Archivo convertido exitosamente.');
             }
