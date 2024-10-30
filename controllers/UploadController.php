@@ -203,6 +203,7 @@ class UploadController extends Controller
                 unlink($file); // Elimina cada archivo
             }
         }
+        die();
 
         foreach (glob($uploadPathConverted . '*.pdf') as $file) {
             echo $file."<br>";
