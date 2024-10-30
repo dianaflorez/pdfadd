@@ -45,18 +45,18 @@ class UploadController extends Controller
     public function actionMergePdfs()
     {
         // Define la ruta del directorio de archivos PDF
-        // $uploadPath = Yii::getAlias('@webroot') . '/uploads/';
+     //   $uploadPath = Yii::getAlias('@webroot') . '/uploads/';
 
-        $uploadPath = Yii::getAlias('@webroot/uploads/');
+       $uploadPath = Yii::getAlias('@webroot/uploads/');
         $convertedPath = $uploadPath . 'converted/';
         
         //$uploadPath = Yii::getAlias('@webroot/uploads/');
-        $pdfFiles = glob($uploadPath . '*.pdf'); // Busca todos los archivos PDF en la carpeta uploads
+    $pdfFiles = glob($uploadPath . '*.pdf'); // Busca todos los archivos PDF en la carpeta uploads
 
-        if (empty($pdfFiles)) {
-            Yii::$app->session->setFlash('error', 'Nooo se han encontrado archivos PDF para combinar en la carpeta de uploads.');
-            return $this->redirect(['upload/index']);
-        }
+    if (empty($pdfFiles)) {
+        Yii::$app->session->setFlash('error', 'Nooo se han encontrado archivos PDF para combinar en la carpeta de uploads.');
+        return $this->redirect(['upload/index']);
+    }
 
         // Crear el directorio de conversión si no existe
         if (!is_dir($convertedPath)) {
@@ -83,8 +83,8 @@ class UploadController extends Controller
                 Yii::$app->session->setFlash('error', 'Error al ejecutar el comando Ghostscript: ' . implode("\n", $output));
             } else {
                 // El comando se ejecutó correctamente
-                // echo "exito";
-                // var_dump( $output);
+                echo "exito";
+                var_dump( $output);
                 //die();
                 Yii::$app->session->setFlash('success', 'Archivo convertido exitosamente.');
             }
@@ -194,8 +194,9 @@ class UploadController extends Controller
             Yii::$app->session->setFlash('error', 'El archivo combinado no está disponible.');
             return $this->redirect(['upload/index']);
         }
-  
-        foreach (glob($uploadPathConverted . '*') as $file2) {
+
+
+        foreach (glob($uploadPathConverted . '*.pdf') as $file2) {
             echo $file2."<br>";
             if (is_file($file2)) {
                 unlink($file2); // Elimina cada archivo
@@ -205,10 +206,14 @@ class UploadController extends Controller
 
         // Elimina todos los archivos PDF en el directorio /uploads
         foreach (glob($uploadPath . '*.pdf') as $file) {
+            
             if (is_file($file)) {
                 unlink($file); // Elimina cada archivo
             }
         }
+
+        
+       
 
         // Configura la respuesta para la descarga del archivo
         Yii::$app->response->sendFile($mergedFilePath, 'pdf_combined.pdf', ['inline' => true])->send();
