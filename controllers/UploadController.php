@@ -29,7 +29,7 @@ class UploadController extends Controller
         if ($model->upload_files && $model->validate()) {
             $savedFiles = [];
             foreach ($model->upload_files as $file) {
-                $filePath = 'uploads/' . $file->baseName . '.' . $file->extension;
+                $filePath = 'uploads/arc_' . time() . '.' . $file->extension;
                 if ($file->saveAs($filePath)) {
                     $savedFiles[] = $filePath;
                 }
