@@ -187,6 +187,7 @@ class UploadController extends Controller
     {
         $uploadPath = Yii::getAlias('@webroot/uploads/');
         $mergedFilePath = $uploadPath . 'pdf_combined.pdf';
+        $uploadPathConverted = Yii::getAlias('@webroot/uploads/converted');
 
         if (!file_exists($mergedFilePath)) {
             Yii::$app->session->setFlash('error', 'El archivo combinado no está disponible.');
@@ -198,6 +199,12 @@ class UploadController extends Controller
 
         // Elimina todos los archivos PDF en el directorio /uploads
         foreach (glob($uploadPath . '*.pdf') as $file) {
+            if (is_file($file)) {
+                unlink($file); // Elimina cada archivo
+            }
+        }
+
+        foreach (glob($uploadPathConverted . '*.pdf') as $file) {
             if (is_file($file)) {
                 unlink($file); // Elimina cada archivo
             }
