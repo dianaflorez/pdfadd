@@ -194,12 +194,6 @@ class UploadController extends Controller
             return $this->redirect(['upload/index']);
         }
 
-        // Elimina todos los archivos PDF en el directorio /uploads
-        foreach (glob($uploadPath . '*.pdf') as $file) {
-            if (is_file($file)) {
-                unlink($file); // Elimina cada archivo
-            }
-        }
 
         foreach (glob($uploadPathConverted . '*.pdf') as $file2) {
             echo $file2."<br>";
@@ -207,6 +201,16 @@ class UploadController extends Controller
                 unlink($file2); // Elimina cada archivo
             }
         }
+
+        
+        // Elimina todos los archivos PDF en el directorio /uploads
+        foreach (glob($uploadPath . '*.pdf') as $file) {
+            if (is_file($file)) {
+                unlink($file); // Elimina cada archivo
+            }
+        }
+
+       
 
         // Configura la respuesta para la descarga del archivo
         Yii::$app->response->sendFile($mergedFilePath, 'pdf_combined.pdf', ['inline' => true])->send();
