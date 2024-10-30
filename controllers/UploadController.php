@@ -195,6 +195,7 @@ class UploadController extends Controller
             return $this->redirect(['upload/index']);
         }
 
+        echo "casi converte";
 
         foreach (glob($uploadPathConverted . '*.pdf') as $file2) {
             echo "dentro converte";
