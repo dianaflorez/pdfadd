@@ -186,7 +186,6 @@ class UploadController extends Controller
     public function actionDownloadMergedPdf()
     {
 
-        die();
         $uploadPath = Yii::getAlias('@webroot/uploads/');
         $mergedFilePath = $uploadPath . 'pdf_combined.pdf';
         $uploadPathConverted = Yii::getAlias('@webroot/uploads/converted');
@@ -207,11 +206,13 @@ class UploadController extends Controller
 
         // Elimina todos los archivos PDF en el directorio /uploads
         foreach (glob($uploadPath . '*.pdf') as $file) {
+            echo "entre";
             if (is_file($file)) {
                 unlink($file); // Elimina cada archivo
             }
         }
 
+        die();
        
 
         // Configura la respuesta para la descarga del archivo
