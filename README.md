@@ -2,7 +2,7 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
     </a>
-    <h1 align="center">PDF ADD</h1>
+    <h1 align="center">PDF ADD desarrollado con Yii2</h1>
     <br>
 </p>
 
@@ -22,19 +22,6 @@ Puedes acceder al código fuente en el siguiente enlace:
 - HTML/CSS
 - JavaScript
 
-## 📸 Capturas de Pantalla
-
-Puedes incluir capturas de pantalla de la aplicación para mostrar su diseño y funcionalidad. Para agregar una imagen en el README.md, usa la siguiente sintaxis:
-
-```md
-![Descripción de la imagen](ruta_de_la_imagen)
-```
-
-Ejemplo:
-
-```md
-![Interfaz principal de la aplicación](./screenshots/main-screen.png)
-```
 
 ## 🔧 Instalación y Uso
 
